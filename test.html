@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SwiggyX - Food Menu with Search & Filter</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    body {
+      background: #f9f9f9;
+      margin: 0;
+      color: #333;
+    }
+    header {
+      background-color: #fc8019;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    header h1 {
+      font-size: 24px;
+      user-select: none;
+    }
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    header nav a:hover {
+      color: #333;
+      background: white;
+      padding: 5px 10px;
+      border-radius: 8px;
+    }
+    main {
+      max-width: 1100px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .controls {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 30px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .controls input[type="search"],
+    .controls select {
+      padding: 12px 15px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1.8px solid #ddd;
+      transition: border-color 0.3s ease;
+      min-width: 200px;
+    }
+    .controls input[type="search"]:focus,
+    .controls select:focus {
+      border-color: #fc8019;
+      outline: none;
+    }
+.food-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+    }
+    .food-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: transform 0.5s ease;
+    }
+    .food-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+    .food-card img {
+      width: 250px;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid #eee;
+      border-radius: 12px 12px 0 0;
+    }
+    .food-info {
+      padding: 15px 20px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .food-info h3 {
+      margin-bottom: 8px;
+      font-size: 20px;
+    }
+    .food-info p {
+      color: #fc8019;
+      font-weight: 700;
+      margin-bottom: 15px;
+      font-size: 18px;
+    }
+    .food-info button {
+      background-color: #fc8019;
+      border: none;
+      padding: 10px;
+      color: white;
+      font-weight: 600;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .food-info button:hover {
+      background-color: #e07000;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 20px;
+      }
+      .food-info h3 {
+        font-size: 18px;
+      }
+      .food-info p {
+        font-size: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>SwiggyX</h1>
+  <nav>
+      <a href="index.html">Home</a>
+      <a href="food.html">Food</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html">Login</a>
+      <a href="help.html">Help</a>
+  </nav>
+</header>
+
+<main>
+  <div class="controls">
+    <input type="search" id="searchInput" placeholder="Search food..." oninput="filterFoods()" />
+    <select id="categoryFilter" onchange="filterFoods()">
+      <option value="all">All Categories</option>
+      <option value="veg">Veg</option>
+      <option value="nonveg">Non-Veg</option>
+      <option value="dessert">Dessert</option>
+    </select>
+  </div>
+<div class="food-grid" id="foodGrid">
+  <!-- Food cards will be rendered here -->
+</div> <!-- ✅ This was missing -->
+</main>
+
+</main>
+
+<script>
+  // Food items with categories
+  const foods = [
+    {name: "Cheese Pizza", price: 250, image: "food/Pizza.jpg", category: "veg"},
+    {name: "Veg Biryani", price: 180, image: "food/Biryani.jpg", category: "veg"},
+    {name: "Veg Burger", price: 150, image: "food/Burger.jpg", category: "veg"},
+    {name: "Sushi Platter", price: 400, image: "food/Sushi.jpg", category: "nonveg"},
+    {name: "Pasta Alfredo", price: 220, image: "food/Pasta Alfredo.jpg", category: "veg"},
+    {name: "Grilled Sandwich", price: 120, image: "food/Grilled Sandwich.jpg", category: "veg"},
+    {name: "Caesar Salad", price: 130, image: "food/Caesar Salad.jpg", category: "veg"},
+    {name: "Chocolate Brownie", price: 90, image: "food/Brownie.jpg", category: "dessert"}
+  ];
+
+  const foodGrid = document.getElementById('foodGrid');
+
+  function createFoodCard(food) {
+    const card = document.createElement('div');
+    card.className = 'food-card';
+
+    card.innerHTML = `
+      <img src="${food.image}" alt="${food.name}" loading="lazy" />
+      <div class="food-info">
+        <h3>${food.name}</h3>
+        <p>₹${food.price}</p>
+        <button onclick="addToCart('${food.name}', ${food.price}, '${food.image}')">Add to Cart</button>
+      </div>
+    `;
+    return card;
+  }
+
+  function renderFoods(items) {
+    foodGrid.innerHTML = '';
+    if (items.length === 0) {
+      foodGrid.innerHTML = '<p style="grid-column: 1/-1; text-align:center; font-size:18px; color:#777;">No food found.</p>';
+      return;
+    }
+    items.forEach(food => {
+      foodGrid.appendChild(createFoodCard(food));
+    });
+  }
+
+  function filterFoods() {
+    const query = document.getElementById('searchInput').value.toLowerCase();
+    const category = document.getElementById('categoryFilter').value;
+
+    let filtered = foods.filter(food => food.name.toLowerCase().includes(query));
+
+    if (category !== 'all') {
+      filtered = filtered.filter(food => food.category === category);
+    }
+
+    renderFoods(filtered);
+  }
+
+  function addToCart(name, price, image) {
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const existing = cart.find(item => item.name === name);
+    if (existing) {
+      existing.quantity += 1;
+    } else {
+      cart.push({ name, price, image, quantity: 1 });
+    }
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(`${name} added to cart!`);
+  }
+
+  // Initial render of all foods
+  renderFoods(foods);
+</script>
+
+</body>
+</html>

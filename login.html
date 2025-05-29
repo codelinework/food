@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Swiggy Style Login/Signup</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #fefefe;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-image: linear-gradient(to right, #fff, #fef2f2);
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      padding: 40px;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: 25px;
+      color: #333;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    .input-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #555;
+      font-weight: 500;
+    }
+
+    .input-group input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      transition: border-color 0.3s ease;
+    }
+
+    .input-group input:focus {
+      outline: none;
+      border-color: #fc8019;
+    }
+
+    .btn {
+      width: 100%;
+      background-color: #fc8019;
+      color: #fff;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: #e97109;
+    }
+
+    .toggle-text {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 14px;
+    }
+
+    .toggle-text a {
+      color: #fc8019;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    @media (max-width: 500px) {
+      .container {
+        margin: 20px;
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2 id="formTitle">Login to Swiggy</h2>
+    <form id="userForm" onsubmit="handleFormSubmit(event)">
+      <div class="input-group" id="nameGroup" style="display: none;">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" />
+      </div>
+      <div class="input-group">
+        <label for="email">Email or Phone Number</label>
+        <input type="text" id="email" name="email" required />
+      </div>
+      <div class="input-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" required />
+      </div>
+      <button type="submit" class="btn" id="submitBtn">Login</button>
+    </form>
+    <div class="toggle-text">
+      <span id="toggleMsg">Don't have an account?</span>
+      <a onclick="toggleForm()" id="toggleLink">Sign up</a>
+    </div>
+  </div>
+
+  <script>
+    let isSignup = false;
+
+    function toggleForm() {
+      isSignup = !isSignup;
+
+      document.getElementById("formTitle").textContent = isSignup ? "Sign up to Swiggy" : "Login to Swiggy";
+      document.getElementById("submitBtn").textContent = isSignup ? "Sign up" : "Login";
+      document.getElementById("toggleMsg").textContent = isSignup ? "Already have an account?" : "Don't have an account?";
+      document.getElementById("toggleLink").textContent = isSignup ? "Login" : "Sign up";
+      document.getElementById("nameGroup").style.display = isSignup ? "block" : "none";
+    }
+
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      // Simple simulation (you can add real validation here)
+      alert(isSignup ? "Signed up successfully!" : "Logged in successfully!");
+      window.location.href = "index.html"; // Redirect to home.html
+    }
+  </script>
+</body>
+</html>

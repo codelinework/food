@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Swiggy Clone 2026 - Home</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      background: #fff;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      background-color: #fc8019;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 {
+      font-size: 24px;
+    }
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.7)),
+                  url('https://source.unsplash.com/1600x900/?food,restaurant') center/cover no-repeat;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      padding: 30px;
+      animation: fadeIn 2s ease;
+    }
+    .hero .content {
+      background: rgba(0, 0, 0, 0.4);
+      padding: 40px;
+      border-radius: 16px;
+      max-width: 600px;
+      text-align: center;
+      backdrop-filter: blur(6px);
+    }
+    .hero h2 {
+      font-size: 42px;
+      line-height: 1.3;
+      animation: slideIn 1s ease forwards;
+    }
+    .hero p {
+      margin: 15px 0 25px;
+      font-size: 18px;
+    }
+    .hero .search-box {
+      display: flex;
+      max-width: 500px;
+      margin: auto;
+    }
+    .hero input {
+      padding: 14px;
+      flex: 1;
+      border: none;
+      border-radius: 8px 0 0 8px;
+      font-size: 16px;
+      outline: none;
+    }
+    .hero button {
+      background: #ffc107;
+      border: none;
+      padding: 14px 20px;
+      font-size: 16px;
+      border-radius: 0 8px 8px 0;
+      cursor: pointer;
+      font-weight: bold;
+      color: #222;
+    }
+
+    /* Sections */
+    section {
+      padding: 40px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+    section h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    /* Cards */
+    .categories, .restaurants {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      transition: 0.3s;
+      background: #fff;
+    }
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    .card img {
+      width: 100%;
+      height: 120px;
+      object-fit: cover;
+    }
+    .card p {
+      padding: 10px;
+      text-align: center;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: #ccc;
+      padding: 30px;
+      text-align: center;
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideIn {
+      from { transform: translateY(30px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .hero h2 {
+        font-size: 24px;
+      }
+      header h1 {
+        font-size: 18px;
+      }
+      .hero .search-box {
+        flex-direction: column;
+      }
+      .hero input, .hero button {
+        width: 100%;
+        border-radius: 8px;
+        margin-bottom: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <h1>SwiggyX</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="food.html">Food</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html">Login</a>
+      <a href="help.html">Help</a>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <div class="hero">
+    <div class="content">
+      <h2>Delicious Food Delivered<br><span style="color: #ffc107;">Fast & Fresh</span></h2>
+      <p>Enter your location to explore top restaurants near you</p>
+      <div class="search-box">
+        <input type="text" placeholder="Search by city or area...">
+        <button>Search</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Categories -->
+  <section>
+    <h2>Popular Categories</h2>
+    <div class="categories">
+      <div class="card">
+        <img src="food/Pizza.jpg" alt="Pizza" />
+        <p>Pizza</p>
+      </div>
+      <div class="card">
+        <img src="food/Burger.jpg" alt="Burger" />
+        <p>Burger</p>
+      </div>
+      <div class="card">
+        <img src="food/Biryani.jpg" alt="Biryani" />
+        <p>Biryani</p>
+      </div>
+      <div class="card">
+        <img src="food/Sushi.jpg" alt="Sushi" />
+        <p>Sushi</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Restaurants -->
+  <section>
+    <h2>Featured Restaurants</h2>
+    <div class="restaurants">
+      <div class="card">
+        <img src="food/Spice Villa.jpg" alt="Spice Villa" />
+        <p>Spice Villa</p>
+      </div>
+      <div class="card">
+        <img src="food/Urban Bites.jpg" alt="Urban Bites" />
+        <p>Urban Bites</p>
+      </div>
+      <div class="card">
+        <img src="food/Café Nova.jpg" alt="Café Nova" />
+        <p>Café Nova</p>
+      </div>
+      <div class="card">
+        <img src="food/Fast Feast.jpg" alt="Fast Feast" />
+        <p>Fast Feast</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 SwiggyX. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

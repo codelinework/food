@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Help | SwiggyX</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    /* Header */
+    header {
+      background-color: #fc8019;
+      color: white;
+      padding: 8px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 {
+      font-size: 24px;
+    }
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+
+    /* Help Page Content */
+    .container {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      text-align: center;
+      color: #ffffff;
+      margin-bottom: 40px;
+    }
+
+    .faq {
+      margin-bottom: 30px;
+    }
+
+    .faq h3 {
+      margin-bottom: 10px;
+      color: #222;
+    }
+
+    .faq p {
+      margin-bottom: 20px;
+      color: #555;
+    }
+
+    .contact-section {
+      padding: 20px;
+      background-color: #f9f9f9;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+    }
+
+    .contact-section h2 {
+      margin-bottom: 15px;
+      color: #fc8019;
+    }
+
+    .contact-info {
+      line-height: 1.7;
+      color: #444;
+    }
+
+    a {
+      color: #fc8019;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    /* Footer */
+    footer {
+      background: #222;
+      color: #ccc;
+      padding: 30px;
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      header h1 {
+        margin-bottom: 10px;
+        font-size: 20px;
+      }
+      header nav a {
+        margin: 5px 10px 0 0;
+        display: inline-block;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <header>
+          <h1>SwiggyX</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="food.html">Food</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html">Login</a>
+      <a href="help.html">Help</a>
+    </nav>
+  </header>
+
+  <!-- Main Help Content -->
+  <div class="container">
+    <center>
+    <h1 style="color: black;">Help & Support</h1>
+
+    </center>
+    <div class="faq">
+      <h3>How can I place an order?</h3>
+      <p>Browse the menu, add your favorite items to the cart, and proceed to checkout.</p>
+
+      <h3>What are the payment options?</h3>
+      <p>We accept UPI, debit/credit cards, net banking, and cash on delivery (COD).</p>
+
+      <h3>How do I cancel or modify my order?</h3>
+      <p>Go to the 'My Orders' section and click on 'Cancel' or 'Modify' if it's not already being prepared.</p>
+
+      <h3>What if I receive the wrong order?</h3>
+      <p>Please contact our support team immediately. We’ll resolve the issue as quickly as possible.</p>
+    </div>
+
+    <div class="contact-section">
+      <h2>Still need help?</h2>
+      <div class="contact-info">
+        📧 Email: <a href="mailto:support@swiggystyle.com">support@swiggystyle.com</a><br />
+        ☎️ Phone: +91 98765 43210<br />
+        📍 Address: 123, Food Street, Flavor Town, India
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 SwiggyX. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SwiggyX - Restaurants</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body {
+      background: #f8f8f8;
+      color: #333;
+    }
+    header {
+      background-color: #fc8019;
+      color: white;
+      padding: 15px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    header h1 {
+      font-size: 24px;
+    }
+    header nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+    }
+    .search-filter {
+      background: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
+    }
+    .search-filter input {
+      padding: 12px;
+      width: 60%;
+      max-width: 400px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 16px;
+      margin-right: 10px;
+    }
+    .filters {
+      margin-top: 15px;
+    }
+    .filters button {
+      margin: 5px;
+      padding: 10px 16px;
+      border: none;
+      border-radius: 20px;
+      background: #eee;
+      cursor: pointer;
+      font-size: 14px;
+      transition: 0.2s;
+    }
+    .filters button:hover {
+      background: #fc8019;
+      color: white;
+    }
+    .restaurant-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      padding: 30px;
+      max-width: 1200px;
+      margin: auto;
+    }
+    .restaurant-card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+    }
+    .restaurant-card:hover {
+      transform: translateY(-5px);
+    }
+    .restaurant-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+    .restaurant-info {
+      padding: 15px;
+    }
+    .restaurant-info h3 {
+      font-size: 18px;
+      margin-bottom: 8px;
+    }
+    .restaurant-info .rating {
+      color: #555;
+      font-size: 14px;
+      display: flex;
+      justify-content: space-between;
+    }
+    footer {
+      background: #222;
+      color: #ccc;
+      padding: 30px;
+      text-align: center;
+      margin-top: 50px;
+    }
+    @media (max-width: 600px) {
+      .search-filter input {
+        width: 100%;
+        margin-bottom: 10px;
+      }
+      .filters {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>SwiggyX</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="food.html">Food</a>
+      <a href="restaurants.html">Restaurants</a>
+      <a href="cart.html">Cart</a>
+      <a href="login.html">Login</a>
+      <a href="help.html">Help</a>
+    </nav>
+  </header>
+
+  <div class="search-filter">
+    <input type="text" placeholder="Search for restaurants, cuisines...">
+    <div class="filters">
+      <button>Fast Delivery</button>
+      <button>Rating 4.0+</button>
+      <button>Pure Veg</button>
+      <button>New Arrivals</button>
+    </div>
+  </div>
+
+  <div class="restaurant-list">
+    <div class="restaurant-card">
+      <img src="food/Urban Bites.jpg" alt="Urban Bites">
+      <div class="restaurant-info">
+        <h3>Urban Bites</h3>
+        <div class="rating">
+          <span>⭐ 4.3</span>
+          <span>30 mins</span>
+        </div>
+      </div>
+    </div>
+    <div class="restaurant-card">
+      <img src="food/Spice Villa.jpg" alt="Spice Villa">
+      <div class="restaurant-info">
+        <h3>Spice Villa</h3>
+        <div class="rating">
+          <span>⭐ 4.5</span>
+          <span>25 mins</span>
+        </div>
+      </div>
+    </div>
+    <div class="restaurant-card">
+      <img src="food/Café Nova.jpg" alt="Café Nova">
+      <div class="restaurant-info">
+        <h3>Café Nova</h3>
+        <div class="rating">
+          <span>⭐ 4.1</span>
+          <span>35 mins</span>
+        </div>
+      </div>
+    </div>
+    <div class="restaurant-card">
+      <img src="food/Fast Feast.jpg" alt="Fast Feast">
+      <div class="restaurant-info">
+        <h3>Fast Feast</h3>
+        <div class="rating">
+          <span>⭐ 4.0</span>
+          <span>20 mins</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>© 2026 SwiggyX. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
